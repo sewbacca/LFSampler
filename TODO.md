@@ -1,0 +1,25 @@
+# todo
+
+- [X] Implement Sampler
+  - [X] Debug
+  - [X] JIT
+- [ ] Implement Formatter
+  - [ ] Basic Reporter
+  - [X] Flame
+    - [X] Graph
+    - [X] Chart
+  - [ ] Source Code Annotator
+- [ ] Refactor Sampler
+  - [ ] Exception Safe
+- [ ] Testing
+  - [ ] Write Example App
+  - [ ] Write Example Profilers
+  - [ ] Check Edge Cases
+- [ ] Documentation
+  - [ ] API Documentation
+  - [ ] Demos
+- [ ] Publishing
+  - [X] [Choose a license](https://choosealicense.com/)
+  - [ ] Create GitHub Repo
+    - [ ] Set To Public
+  - [ ] Create LuaRock
