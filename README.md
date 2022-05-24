@@ -30,7 +30,7 @@ file:close()
 
 Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to generate the svg:
 ```
-<flamegraphoutput.cap output.svg
+<flamegraph> output.cap output.svg
 ```
 Flamegraphs are awesome, I highly recommend checking out this video.
 
