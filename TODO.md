@@ -3,12 +3,12 @@
 - [X] Implement Sampler
   - [X] Debug
   - [X] JIT
-- [ ] Implement Formatter
-  - [ ] Basic Reporter
+- [X] Implement Formatter
+  - [X] Basic Reporter
   - [X] Flame
     - [X] Graph
     - [X] Chart
-  - [ ] Source Code Annotator
+  - [X] Source Code Annotator
 - [X] Refactor Sampler
   - [X] Break in several files
 - [ ] Testing
