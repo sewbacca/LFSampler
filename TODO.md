@@ -20,6 +20,6 @@
   - [ ] Demos
 - [ ] Publishing
   - [X] [Choose a license](https://choosealicense.com/)
-  - [ ] Create GitHub Repo
+  - [X] Create GitHub Repo
     - [ ] Set To Public
   - [ ] Create LuaRock
