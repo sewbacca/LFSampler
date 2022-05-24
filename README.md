@@ -19,7 +19,7 @@ lfsampler.start()
 lfsampler.finish()
 
 local file = io.open("output.cap", "w")
-file:write(formatter.flamegraph(lfsampler.popStacktraces()))
+file:write(formatter.flamegraph(lfsampler.popResults()))
 file:close()
 
 ```
@@ -43,7 +43,7 @@ lfsampler.start()
 -- Some code
 lfsampler.finish()
 
-local sources = formatter.annotateSource(lfsampler.popStacktraces())
+local sources = formatter.annotateSource(lfsampler.popResults())
 for name, data in pairs(sources) do
 	local file = io.open(name:gsub("%.lua", ".tlua"):gsub("/", "."):gsub(), "w")
 	file:write(data)
@@ -76,7 +76,7 @@ lfsampler.start()
 lfsampler.finish()
 
 local file = io.open("output.cap", "w")
-file:write(formatter.formatReport(formatter.generateReport(lfsampler.popStacktraces())))
+file:write(formatter.formatReport(formatter.generateReport(lfsampler.popResults())))
 file:close()
 
 ```

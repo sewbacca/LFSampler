@@ -1,4 +1,4 @@
-# todo
+# Todo before publishing
 
 - [X] Implement Sampler
   - [X] Debug
@@ -9,11 +9,11 @@
     - [X] Graph
     - [X] Chart
   - [ ] Source Code Annotator
-- [ ] Refactor Sampler
-  - [ ] Exception Safe
+- [X] Refactor Sampler
+  - [X] Break in several files
 - [ ] Testing
-  - [ ] Write Example App
-  - [ ] Write Example Profilers
+  - [X] Write Example App
+  - [X] Write Example Profilers
   - [ ] Check Edge Cases
 - [ ] Documentation
   - [ ] API Documentation
@@ -21,5 +21,3 @@
 - [ ] Publishing
   - [X] [Choose a license](https://choosealicense.com/)
   - [X] Create GitHub Repo
-    - [ ] Set To Public
-  - [ ] Create LuaRock

@@ -11,6 +11,10 @@ description = {
 build = {
    type = "builtin",
    modules = {
-      luaflamegraph = "lua/luaflamegraph.lua"
+      ["lfsampler.debugProfiler"] = "lua/lfsampler/debugProfiler.lua",
+      ["lfsampler.formatters"] = "lua/lfsampler/formatters.lua",
+      ["lfsampler.init"] = "lua/lfsampler/init.lua",
+      ["lfsampler.jitProfiler"] = "lua/lfsampler/jitProfiler.lua",
+      ["lfsampler.ProfilerResults"] = "lua/lfsampler/ProfilerResults.lua",
    }
 }

@@ -7,11 +7,8 @@
 		"C:/msys64/mingw64/share/luajit-2.1.0-beta3/?.lua",
 		"lua/?.lua",
 		"lua/?/init.lua",
-		"examples/optimize_primes/?.lua",
-		"examples/optimize_primes/?/init.lua",
+		"example/?.lua",
+		"example/?/init.lua",
 	],
 	"Lua.runtime.pathStrict": true,
-	"Lua.runtime.special": {
-		"error": "assert"
-	}
 }
