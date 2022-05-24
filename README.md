@@ -30,7 +30,7 @@ file:close()
 
 Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to generate the svg:
 ```
-<flamegraph> output.cap > output.svg
+<flamegraphoutput.cap output.svg
 ```
 Flamegraphs are awesome, I highly recommend checking out this video.
 
@@ -103,56 +103,56 @@ In code documentation available via [Lua Language Server](https://github.com/sum
 # lfsampler
 
 
-> `lfsampler.start():`
+`lfsampler.start():`
 
 Starts the session.
 
-> `lfsampler.stop():`
+`lfsampler.stop():`
 
 Stops the session
 
-> `lfsampler.popResults(): ProfilerResults`
+`lfsampler.popResults(): ProfilerResults`
 
 Returns results and then discards them. Use this if you want to have seperate session results.
 
-> `lfsampler.getResults(): ProfilerResults`
+`lfsampler.getResults(): ProfilerResults`
 
 Returns current accumulated results (copy).
 Check out available `formatters` or `ProfilerResults` to build your own.
 
-> `lfsampler.discard()`
+`lfsampler.discard()`
 
 Discards current results. If they are not discarded, any subsequent sessions, will accumulate.
 
-> `lfsampler.setProfiler(profiler_type: "jit" | "debug" | "dummy", n: integer)`
+`lfsampler.setProfiler(profiler_type: "jit" | "debug" | "dummy", n: integer)`
 
 Sets profiler to use.
 n: debug: The instruction rate at which samples are collected, jit: Sample rate in milliseconds. Is OS-Dependant
 Errors, if profiler is unavailable. Call it with pcall or use `lfsampler.isAvailable(profiler)`
 
-> `lfsampler.anyAvailable(): boolean`
+`lfsampler.anyAvailable(): boolean`
 
 Checks whether an profiler is available ("jit" or "debug" ignoring "dummy").
 
-> `lfsampler.currentProfiler(): "jit" | "debug" | "dummy"`
+`lfsampler.currentProfiler(): "jit" | "debug" | "dummy"`
 
 Retrieves current selected profiler.
 
-> `lfsampler.isAvailable(profiler: string): boolean`
+`lfsampler.isAvailable(profiler: string): boolean`
 
 Returns whether or not specified profiler is available
 
-> `lfsampler.isRunning(): boolean`
+`lfsampler.isRunning(): boolean`
 
 Returns whether or not the profiler is running.
 
 # lfsampler.formatters
 
-> `formatters.formatReport(results: ProfilerResults): string`
+`formatters.formatReport(results: ProfilerResults): string`
 
 Formats given results into an easly printable report.
 
-> `formatters.flamegraph(results: ProfilerResults, type: "graph" | "chart", granularityFormatter fun(stacktrace: lfsampler.Stacktrace)):`
+`formatters.flamegraph(results: ProfilerResults, type: "graph" | "chart", granularityFormatter fun(stacktrace: lfsampler.Stacktrace)):`
 
 Formats results according to [FlameGraph](https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl)
 Format: `<file>(:<line>)?-<func>;... <samples>\n...`
@@ -160,34 +160,34 @@ e.g. `formatters.granularityLine`
 `formatters.annotateSource(results: ProfilerResults): { [path]: annotated_source_code }`
 Returns completly annotated source code foreach module.
 
-> `formatters.granularityFunc():`
+`formatters.granularityFunc():`
 
 Hash function for stacktrace by file and function name
 
-> `formatters.granularityLine():`
+`formatters.granularityLine():`
 
 Hash function for stacktrace by file and function name and line
 
-> `formatters.sortBySampleCount():`
+`formatters.sortBySampleCount():`
 
 Comparates two { sampleCount: integer } by >
 
 # ProfilerResults
 
-> `ProfilerResults.totalSamples`
+`ProfilerResults.totalSamples`
 
 Total sample count
 Accumulated duration
 
-> `ProfilerResults.duration`
+`ProfilerResults.duration`
 
 Accumulated duration.
 
-> `ProfilerResults:accumulate(hash fun(stacktrace: Stacktrace)): ProcessedResults`
+`ProfilerResults:accumulate(hash fun(stacktrace: Stacktrace)): ProcessedResults`
 
 Accumulates all stacktraces collapsed by given hash function.
 
-> `ProfilerResults:squash():`
+`ProfilerResults:squash():`
 
 Same as accumulate, but keeps order.
 
