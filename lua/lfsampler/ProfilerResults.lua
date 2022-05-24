@@ -20,7 +20,9 @@ function ProfilerResults:new()
 
 	---@type lfsampler.Probe[]
 	this.probes = { }
+	--- Total sample count
 	this.totalSamples = 0
+	--- Accumulated duration
 	this.duration = 0
 
 	return this
@@ -60,6 +62,7 @@ function ProfilerResults:_calcRate()
 	self.actualRate = 1000 * self.duration / self.totalSamples
 end
 
+--- Accumulates all stacktraces collapsed by given hash function
 ---@param hash fun(stacktrace: lfsampler.Stacktrace)
 ---@return lfsampler.AccumulatedResults
 function ProfilerResults:accumulate(hash)
@@ -97,6 +100,7 @@ function ProfilerResults:accumulate(hash)
 	return results
 end
 
+--- Same as accumulate, but keeps order.
 ---@param hash fun(stacktrace: lfsampler.Stacktrace)
 ---@return lfsampler.AccumulatedResults
 function ProfilerResults:squash(hash)

@@ -22,8 +22,9 @@ local profiler = jitprofiler or debugprofiler or dummyprofiler
 ---@class lfsampler
 local m = { }
 
---- Sets profiling type
+--- Sets profiler to use
 ---@param profiler_type lfsampler.ProfilerType
+---@param n integer @ debug: The instruction rate at which samples are collected, jit: Sample rate in milliseconds. Is OS-Dependant
 function m.setProfiler(profiler_type, n)
 	if profiler.running then
 		profiler.finish()
@@ -60,10 +61,18 @@ function m.anyAvailable()
 	return not not (jitprofiler or debugprofiler)
 end
 
---- Returns wether or not jit is available
+--- Returns whether or not specified profiler is available
 ---@return boolean
-function m.isJitAvailable()
-	return not not jitprofiler
+function m.isAvailable(profiler_type)
+	if profiler_type == "jit" then
+		return not not jitprofiler
+	elseif profiler_type == "debug" then
+		return not not debugprofiler
+	elseif profiler_type == "dummy" then
+		return true
+	else
+		return false
+	end
 end
 
 --- Starts the session
@@ -76,7 +85,7 @@ function m.stop()
 	profiler.finish()
 end
 
---- Returns current results
+--- Returns current results (copy)
 function m.getResults()
 	return profiler.getResults()
 end
@@ -93,6 +102,8 @@ function m.popResults()
 	return traces
 end
 
+--- Return whether or not the profiler is running
+---@return boolean
 function m.isRunning()
 	return profiler.running
 end

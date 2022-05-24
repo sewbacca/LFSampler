@@ -3,6 +3,7 @@
 ---@class lfsampler.formatters
 local formatters = { }
 
+--- Hash function for stacktrace by function name
 ---@param stacktrace lfsampler.Stacktrace
 function formatters.granularityFunc(stacktrace)
 	local hash = { }
@@ -12,6 +13,7 @@ function formatters.granularityFunc(stacktrace)
 	return table.concat(hash, ";")
 end
 
+--- Hash function for stacktrace by file and function name and line
 ---@param stacktrace lfsampler.Stacktrace
 function formatters.granularityLine(stacktrace)
 	local hash = { }
@@ -21,6 +23,7 @@ function formatters.granularityLine(stacktrace)
 	return table.concat(hash, ";")
 end
 
+--- Comparates two { sampleCount: integer } by >
 function formatters.sortBySampleCount(a, b)
 	return a.sampleCount > b.sampleCount
 end
@@ -53,6 +56,7 @@ local report_header = ("%20s | %20s | %8s | %11s | %7s"):format("File", "Func", 
 local report_line = "%20s | %20s | %6.2f %% | %8d ms | %d"
 local report_line_last = "%20s | %20s | 100.00 %% | %9.3f s | %d"
 
+--- Formats given results into an easly printable report.
 ---@param results lfsampler.ProfilerResults
 function formatters.formatReport(results)
 	local function hashSingle(loc)
@@ -116,7 +120,7 @@ end
 --- Format: `<file>(:<line>)?-<func>;... <samples>\n...`
 ---@param results lfsampler.ProfilerResults
 ---@param type "graph" | "chart"
----@param granularityFormatter fun(stacktrace: lfsampler.Stacktrace)
+---@param granularityFormatter fun(stacktrace: lfsampler.Stacktrace) @ e.g. formatters.granularityLine
 ---@return string
 function formatters.flamegraph(results, type, granularityFormatter)
 	local accumulated = type == "graph" and results:accumulate(granularityFormatter) or results:squash(granularityFormatter)

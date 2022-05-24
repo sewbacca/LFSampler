@@ -1,12 +1,12 @@
-package = "luaflamegraph"
+package = "lfsampler"
 version = "dev-1"
 source = {
-   url = "*** please add URL for source tarball, zip or repository here ***"
+   url = "https://github.com/sewbacca/LFSampler"
 }
 description = {
-   detailed = "Lua Flamegraph uses either the debug library, or, if possible, the luajit sampler, to generate samples, readable by [FlameGraph](https://github.com/brendangregg/FlameGraph).",
-   homepage = "*** please enter a project homepage ***",
-   license = "*** please specify a license ***"
+   detailed = "LFSampler is a sample profiler, for `Lua 5.1-5.4` or `LuaJIT`.\nIt uses the jit profiler, if available, or the debug library.",
+   homepage = "https://github.com/sewbacca/LFSampler",
+   license = "MIT: https://github.com/sewbacca/LFSampler/blob/main/LICENSE"
 }
 build = {
    type = "builtin",

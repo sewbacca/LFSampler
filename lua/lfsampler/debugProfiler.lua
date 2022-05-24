@@ -22,7 +22,7 @@ end
 
 local samples = { }
 local duration = 0
-local count = 50
+local count = 15
 
 local starttime = 0
 

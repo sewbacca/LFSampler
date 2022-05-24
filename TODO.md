@@ -15,8 +15,8 @@
   - [X] Write Example App
   - [X] Write Example Profilers
   - [ ] Check Edge Cases
-- [ ] Documentation
-  - [ ] API Documentation
+- [X] Documentation
+  - [X] API Documentation
   - [X] Demos
 - [ ] Publishing
   - [X] [Choose a license](https://choosealicense.com/)
