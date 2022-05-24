@@ -3,9 +3,13 @@
 LFSampler is a sample profiler, for `Lua 5.1-5.4` or `LuaJIT`.
 It uses the jit profiler, if available, or the debug library.
 
-# Demo
+# Demos
 
-## Flamegraphs
+Check out the example, to regenerate the report yourself!
+
+## Interactive Flamegraphs
+
+![Flame-Graph](screenshots/flame-graph.png)
 
 How it works:
 
@@ -19,18 +23,20 @@ lfsampler.start()
 lfsampler.finish()
 
 local file = io.open("output.cap", "w")
-file:write(formatter.flamegraph(lfsampler.popResults()))
+file:write(formatter.flamegraph(lfsampler.popResults(), "graph", formatters.granularityFunc))
 file:close()
 
 ```
 
-Now use Flamegraph, to generate the svg:
+Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to generate the svg:
 ```
-flamegraph output.cap > output.svg
+<flamegraph> output.cap > output.svg
 ```
 Flamegraphs are awesome, I highly recommend checking out this video.
 
 ## Source annotations
+
+![Source-Code](screenshots/annotated-report.png)
 
 How it works:
 
@@ -76,9 +82,11 @@ lfsampler.start()
 lfsampler.finish()
 
 local file = io.open("output.cap", "w")
-file:write(formatter.formatReport(formatter.generateReport(lfsampler.popResults())))
+file:write(formatter.basicReport(lfsampler.popResults()))
 file:close()
 
 ```
 
-# Manual
+With:
+
+![Basic-Report](screenshots/basic-report.png)

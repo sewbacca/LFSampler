@@ -17,7 +17,7 @@
   - [ ] Check Edge Cases
 - [ ] Documentation
   - [ ] API Documentation
-  - [ ] Demos
+  - [X] Demos
 - [ ] Publishing
   - [X] [Choose a license](https://choosealicense.com/)
   - [X] Create GitHub Repo
