@@ -5,7 +5,7 @@ local mod = require "weirdness"
 local lfsampler= require "lfsampler"
 local formatters = require "lfsampler.formatters"
 
-lfsampler.setProfiler("jit", 7)
+lfsampler.setProfiler("debug", 7)
 lfsampler.start()
 mod.root()
 lfsampler.stop()
