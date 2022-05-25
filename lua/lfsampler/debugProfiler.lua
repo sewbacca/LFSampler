@@ -27,7 +27,7 @@ local count = 15
 local starttime = 0
 
 local function prof_cb()
-	local trace = new and new(5, 0) or { }
+	local trace = new and new(16, 0) or { }
 	samples[#samples+1] = trace
 
 	local depth = 2

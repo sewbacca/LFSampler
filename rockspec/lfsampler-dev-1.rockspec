@@ -8,6 +8,9 @@ description = {
    homepage = "https://github.com/sewbacca/LFSampler",
    license = "MIT: https://github.com/sewbacca/LFSampler/blob/main/LICENSE"
 }
+dependencies = {
+   "lua >= 5.1, <= 5.4",
+}
 build = {
    type = "builtin",
    modules = {

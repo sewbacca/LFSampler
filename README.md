@@ -1,17 +1,37 @@
+![Lua 5.1-5.4](https://img.shields.io/badge/Lua-5.1%20--%205.4-blue)
+![LuaJIT](https://img.shields.io/badge/Lua-JIT-%234162bf)
+![luarocks](https://img.shields.io/badge/luarocks-lfsampler-blueviolet)
+
 # LFSampler
 
 LFSampler is a sample profiler, for `Lua 5.1-5.4` or `LuaJIT`.
 It uses the jit profiler, if available, or the debug library.
+It can display the data in various formats.
 
-# Demos
+# Content
 
-Check out the example, to regenerate the report yourself!
+- [Showcase](#showcase)
+  - [Interactive Flamegraphs](#interactive-flamegraphs)
+  - [Source annotations](#source-annotations)
+- [Getting started](#getting-started)
+- [Documentation](#documentation)
+  - [`lfsampler`](#lfsampler-1)
+  - [`lfsampler.formatters`](#lfsamplerformatters)
+  - [`ProfilerResults`](#profilerresults)
+  - [Other Structures](#other-structures)
+  - [Anyting Missng?](#anything-missing)
+
+# Showcase
+
+LFSampler can be used to generate several types of performance reports. Below you'll find a few examples you may run on some custom code:
 
 ## Interactive Flamegraphs
 
-![Flame-Graph](screenshots/flame-graph.png)
+![Flame-Graph](screenshots/flamegraph.svg)
 
 How it works:
+
+First dump collected stacktraces:
 
 ```lua
 
@@ -28,11 +48,11 @@ file:close()
 
 ```
 
-Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to generate the svg:
+Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to convert the dumped file into a interactive Flame Graph `.svg`:
 ```
 <flamegraph> output.cap output.svg
 ```
-Flamegraphs are awesome, I highly recommend checking out this video.
+Flamegraphs are awesome, I highly recommend checking out [this video](https://www.youtube.com/watch?v=D53T1Ejig1Q).
 
 ## Source annotations
 
@@ -62,15 +82,13 @@ end
 
 ## Installing
 
-Either install via:
-```
-luarocks install lfsampler
-```
+LFsampler is available via luarocks:
+> `luarocks install lfsampler`
+
+> An alternative way of installing is to clone or download and extract the source code of this project and add it to your package.path
 or drop the `lfsampler` folder into your `package.path`.
 
-## Running sampler
-
-It is as simple as that:
+That's it! Once lfsampler is installed, it can be run on your code as shown below:
 
 ```lua
 
@@ -87,11 +105,11 @@ file:close()
 
 ```
 
-With:
+would produce:
 
 ![Basic-Report](screenshots/basic-report.png)
 
-# Manual
+# Documentation
 
 ##  Debugger priority at startup
 1. JIT
@@ -100,7 +118,7 @@ With:
 
 In code documentation available via [Lua Language Server](https://github.com/sumneko/lua-language-server/).
 
-# lfsampler
+# `lfsampler`
 
 
 `lfsampler.start():`
@@ -146,7 +164,7 @@ Returns whether or not specified profiler is available
 
 Returns whether or not the profiler is running.
 
-# lfsampler.formatters
+# `lfsampler.formatters`
 
 `formatters.formatReport(results: ProfilerResults): string`
 
@@ -172,7 +190,7 @@ Hash function for stacktrace by file and function name and line
 
 Comparates two { sampleCount: integer } by >
 
-# ProfilerResults
+# `ProfilerResults`
 
 `ProfilerResults.totalSamples`
 
@@ -219,6 +237,6 @@ Location: {
 }
 ```
 
-## Missing documentation
+# Anything missing?
 
-Any missing documentation means, it was not intended to be used outside of the profiler.
+"If you find any structure or function to be undocumented it was most likely intended for internal use inside the profiler. If you feel like something vital is missing, do not hesitate to [open an issue](https://github.com/sewbacca/LFSampler/issues/new).
