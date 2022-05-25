@@ -27,7 +27,7 @@ LFSampler can be used to generate several types of performance reports. Below yo
 
 ## Interactive Flamegraphs
 
-![Flame-Graph](screenshots/flamegraph.svg)
+![Flame-Graph](screenshots/flame-graph.png)
 
 How it works:
 
