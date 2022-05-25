@@ -4,7 +4,7 @@ local ProfilerResults = require "lfsampler.ProfilerResults"
 ---@class lfsampler.profiler
 local debugprofiler = { }
 
-local clock = os.clock
+local clock = os and os.clock or function() return 0 end
 local sethook = debug.sethook
 local getinfo = debug.getinfo
 
