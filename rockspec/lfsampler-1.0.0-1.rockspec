@@ -1,7 +1,7 @@
 package = "lfsampler"
 version = "1.0.0-1"
 source = {
-   url = "https://github.com/sewbacca/LFSampler",
+   url = "git://github.com/sewbacca/LFSampler",
    tag = "v1.0.0"
 }
 description = {
