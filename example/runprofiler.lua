@@ -1,5 +1,5 @@
 
-package.path = package.path..";example/?.lua;../lua/?.lua;../lua/?/init.lua;lua/?.lua;lua/?/init.lua"
+package.path = "../lua/?.lua;../lua/?/init.lua;"..package.path
 
 local mod = require "weirdness"
 local lfsampler= require "lfsampler"

@@ -1,10 +1,13 @@
 
 local mod = { }
 
+local totalN = 0
 function mod.root()
+	totalN = 0
 	mod.sectionA()
 	mod.sectionB()
 	mod.sectionC()
+	print()
 end
 
 function mod.sectionA()
@@ -25,7 +28,6 @@ function mod.layer(n)
 	end
 end
 
-local totalN = 0
 local function populate(n)
 	local t = { }
 	for i = totalN + 1, totalN + n do
@@ -37,7 +39,7 @@ end
 
 function mod.rainingFunction()
 	for _, value in ipairs(populate(10)) do
-		print(value)
+		io.write(string.format("\r%6.2f %%", 100 * value/6500))
 	end
 end
 
