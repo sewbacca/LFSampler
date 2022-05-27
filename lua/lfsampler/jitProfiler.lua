@@ -61,7 +61,7 @@ function jitprofiler.getResults()
 			if not file then
 				file, line = mod:gsub("%[builtin#(%d+)%]", get_c_name), -1
 			else
-				line = tonumber(line)
+				line = tonumber(line) or -1
 			end
 
 			func = func:gsub("%[builtin#(%d+)%]", get_c_name)
