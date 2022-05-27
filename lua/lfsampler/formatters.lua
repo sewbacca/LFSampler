@@ -139,8 +139,9 @@ local line_fmt_untracked = "         | %s"
 
 --- Returns completly annotated source code foreach module
 ---@param results lfsampler.ProfilerResults
+---@param searchDirs string? @ Semicolon seperated list of extra search paths (beside package.path)
 ---@return table<string, string> @ { [path]: annotations }
-function formatters.annotateSource(results)
+function formatters.annotateSource(results, searchDirs)
 	local files = { }
 
 	local function exists(path)
@@ -152,16 +153,39 @@ function formatters.annotateSource(results)
 		return false
 	end
 
+	local function find(path)
+		if exists(path) then
+			return path
+		elseif package and package.path then
+			for modpath in package.path:gmatch("[^;]+") do
+				local pathAt = modpath:gsub("%?%.lua", path)
+				if exists(pathAt) then
+					return pathAt
+				end
+			end
+
+			if searchDirs then
+				for modpath in searchDirs:gmatch "[^;]+" do
+					local pathAt = modpath.."/"..path
+					if exists(pathAt) then
+						return pathAt
+					end
+				end
+			end
+		end
+	end
+
 	local function get_lines(path)
 		if files[path] ~= nil then
 			return files[path]
 		end
 
-		if exists(path) then
+		local actualPath = find(path)
+		if actualPath then
 			local lines = { }
 
 
-			for line in io.lines(path) do
+			for line in io.lines(actualPath) do
 				lines[#lines+1] = {
 					text = line,
 					tracked = 0

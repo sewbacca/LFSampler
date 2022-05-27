@@ -175,7 +175,8 @@ Formats given results into an easly printable report.
 Formats results according to [FlameGraph](https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl)
 Format: `<file>(:<line>)?-<func>;... <samples>\n...`
 e.g. `formatters.granularityLine`
-`formatters.annotateSource(results: ProfilerResults): { [path]: annotated_source_code }`
+
+`formatters.annotateSource(results: ProfilerResults, searchDirs string?): { [path]: annotated_source_code }`
 Returns completly annotated source code foreach module.
 
 `formatters.granularityFunc():`

@@ -26,7 +26,7 @@ local function get_c_name(n)
 end
 
 local function prof_cb(thread, samples, _)
-	probes[#probes+1] = dumpstack(thread, "pl-f;", -100)
+	probes[#probes+1] = dumpstack(thread, "pl|f;", -100)
 	probes[#probes+1] = samples
 end
 
@@ -56,10 +56,13 @@ function jitprofiler.getResults()
 
 		local stacktrace = { }
 		for location in stacktrace_encoded:gmatch "[^;]+" do
-			local file, line, func = location:match("^([^:]+):(%d+)-(.*)$")
-			file = file or location:match("^[^-]+")
-			line = line or -1
-			func = func or location:match("[^-]+$")
+			local mod, func = location:match "^([^|]+)|(.+)$"
+			local file, line = mod:match "^(.+):([^:]+)$"
+			if not file then
+				file, line = mod:gsub("%[builtin#(%d+)%]", get_c_name), -1
+			else
+				line = tonumber(line)
+			end
 
 			func = func:gsub("%[builtin#(%d+)%]", get_c_name)
 
