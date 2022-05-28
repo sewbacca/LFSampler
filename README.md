@@ -50,7 +50,7 @@ file:close()
 
 Now use [FlameGraph](https://github.com/brendangregg/FlameGraph), to convert the dumped file into a interactive Flame Graph `.svg`:
 ```
-<flamegraph> output.cap output.svg
+<flamegraph> output.cap > output.svg
 ```
 Flamegraphs are awesome, I highly recommend checking out [this video](https://www.youtube.com/watch?v=D53T1Ejig1Q).
 
