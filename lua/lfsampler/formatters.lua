@@ -156,15 +156,15 @@ function formatters.annotateSource(results, searchDirs)
 	local function find(path)
 		if exists(path) then
 			return path
-		elseif package and package.path then
-			for modpath in package.path:gmatch("[^;]+") do
-				local pathAt = modpath:gsub("%?%.lua", path)
-				if exists(pathAt) then
-					return pathAt
+		else
+			if package and package.path then
+				for modpath in package.path:gmatch("[^;]+") do
+					local pathAt = modpath:gsub("%?%.lua", path)
+					if exists(pathAt) then
+						return pathAt
+					end
 				end
-			end
-
-			if searchDirs then
+			end if searchDirs then
 				for modpath in searchDirs:gmatch "[^;]+" do
 					local pathAt = modpath.."/"..path
 					if exists(pathAt) then
