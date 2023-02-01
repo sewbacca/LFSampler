@@ -71,7 +71,7 @@ lfsampler.stop()
 
 local sources = formatter.annotateSource(lfsampler.popResults())
 for name, data in pairs(sources) do
-	local file = io.open(name:gsub("%.lua", ".tlua"):gsub("/", "."):gsub(), "w")
+	local file = io.open(name:gsub("%.lua", ".tlua"):gsub("/", "."), "w")
 	file:write(data)
 	file:close()
 end
