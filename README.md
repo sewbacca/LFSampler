@@ -40,7 +40,7 @@ local formatter = require "lfsampler.formatter"
 
 lfsampler.start()
 -- Some code
-lfsampler.finish()
+lfsampler.stop()
 
 local file = io.open("output.cap", "w")
 file:write(formatter.flamegraph(lfsampler.popResults(), "graph", formatters.granularityFunc))
@@ -67,7 +67,7 @@ local formatter = require "lfsampler.formatter"
 
 lfsampler.start()
 -- Some code
-lfsampler.finish()
+lfsampler.stop()
 
 local sources = formatter.annotateSource(lfsampler.popResults())
 for name, data in pairs(sources) do
@@ -97,7 +97,7 @@ local formatter = require "lfsampler.formatter"
 
 lfsampler.start()
 -- Some code
-lfsampler.finish()
+lfsampler.stop()
 
 local file = io.open("output.cap", "w")
 file:write(formatter.basicReport(lfsampler.popResults()))
