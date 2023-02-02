@@ -100,7 +100,7 @@ lfsampler.start()
 lfsampler.stop()
 
 local file = io.open("output.cap", "w")
-file:write(formatter.basicReport(lfsampler.popResults()))
+file:write(formatter.formatReport(lfsampler.popResults()))
 file:close()
 
 ```
