@@ -1,6 +1,7 @@
 
 local ProfilerResults = require "lfsampler.ProfilerResults"
 
+--- #internal
 ---@class lfsampler.profiler
 local debugprofiler = { }
 
@@ -13,7 +14,9 @@ if jit then
 	require "table.clear"
 end
 
+---@diagnostic disable-next-line: undefined-field
 local new = table.new
+---@diagnostic disable-next-line: undefined-field
 local clear = table.clear or function (t)
 	for i = #t, 1, -1 do
 		t[i] = nil

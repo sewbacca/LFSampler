@@ -1,5 +1,6 @@
 
 
+--- A collection of functions to interpret lfsampler.ProfilerResults
 ---@class lfsampler.formatters
 local formatters = { }
 

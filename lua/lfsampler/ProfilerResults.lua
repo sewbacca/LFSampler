@@ -1,6 +1,8 @@
 
 ---@class lfsampler.ProfilerResults
 local ProfilerResults = { }
+
+---@private
 ProfilerResults.__index = ProfilerResults
 
 --- Creates a unique hash for a given position
@@ -32,15 +34,18 @@ end
 ---@param stacktrace lfsampler.Stacktrace
 ---@param samples integer
 function ProfilerResults:_addStacktrace(stacktrace, samples)
+	--- Represents a stackframe location
 	---@class lfsampler.Location
 	---@field file string
 	---@field line number
 	---@field func string
 
+	--- A probe, containing info about samples inside a specific stacktrace
 	---@class lfsampler.Probe
 	---@field stacktrace lfsampler.Stacktrace
 	---@field sampleCount integer
 
+	--- A stacktrace is just a list of locations
 	---@alias lfsampler.Stacktrace lfsampler.Location[]
 
 	local last = self.probes[#self.probes]
@@ -63,13 +68,14 @@ function ProfilerResults:_calcRate()
 end
 
 --- Accumulates all stacktraces collapsed by given hash function
----@param hash fun(stacktrace: lfsampler.Stacktrace)
+---@param hash fun(stacktrace: lfsampler.Stacktrace): any
 ---@return lfsampler.AccumulatedResults
 function ProfilerResults:accumulate(hash)
 	hash = hash or stronghash
 
 	local acc = { }
 
+	--- Containing unique stacktraces, accumulated over all samples
 	---@class lfsampler.AccumulatedResults
 	local results = {
 		---@type lfsampler.AccumulatedProbe[]
@@ -102,10 +108,11 @@ end
 
 --- Same as accumulate, but keeps order.
 ---@param hash fun(stacktrace: lfsampler.Stacktrace)
----@return lfsampler.AccumulatedResults
+---@return lfsampler.SquashedOrderedResults
 function ProfilerResults:squash(hash)
 	hash = hash or stronghash
 
+	--- Same as lfsampler.AccumulatedResults, but keeps the order, so the stacktraces may not be unique
 	---@class lfsampler.SquashedOrderedResults
 	local results = {
 		---@type lfsampler.Probe[]

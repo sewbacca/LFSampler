@@ -1,7 +1,8 @@
 
 local ProfilerResults = require "lfsampler.ProfilerResults"
 
----@class lfsampler.profiler
+--- #internal
+---@class lfsampler.jitprofiler : lfsampler.profiler
 local jitprofiler = { }
 
 local jp = require "jit.profile"
@@ -9,6 +10,7 @@ local vmdef   = require "jit.vmdef"
 
 require "table.clear"
 
+---@diagnostic disable-next-line: undefined-field
 local clear = table.clear
 local clock = os and os.clock or function() return 0 end
 local dumpstack, ffnames, tonumber = jp.dumpstack, vmdef.ffnames, tonumber

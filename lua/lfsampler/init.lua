@@ -1,4 +1,5 @@
 
+--- jit uses jit.profile, debug uses the debug api, and dummy does absolutly nothing
 ---@alias lfsampler.ProfilerType "jit" | "debug" | "dummy"
 
 local debugprofiler, jitprofiler
